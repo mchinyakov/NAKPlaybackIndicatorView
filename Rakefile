@@ -10,4 +10,9 @@ end
 desc 'Run CI task'
 task ci: %w(test:all style)
 
+desc 'Run CI task for Travis CI'
+task travis: :ci do
+  system('sudo easy_install cpp-coveralls && coveralls')
+end
+
 task default: 'test:all'
